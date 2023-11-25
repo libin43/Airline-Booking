@@ -1,3 +1,4 @@
+import userFetchTicket from "../application/usecases/userFetchTicket.js";
 import userInsert from "../application/usecases/userInsert.js";
 import userLoginAuth from "../application/usecases/userLoginAuth.js";
 import userRefreshAuth from "../application/usecases/userRefreshAuth.js";
@@ -10,11 +11,14 @@ export default function userController(
     hashServiceInterface,
     hashService,
     webTokenServiceInterface,
-    webTokenService
+    webTokenService,
+    amadeusServiceInterface,
+    amadeusService,
 ){
     const dbUserRepo = userRepository(userRepoMongoDB())
     const serviceHash = hashServiceInterface(hashService())
     const serviceToken = webTokenServiceInterface(webTokenService())
+    const serviceAmadeus = amadeusServiceInterface(amadeusService())
 
     const addUser = async(req, res, next)=>{
         try{
@@ -111,11 +115,27 @@ export default function userController(
 
     }
 
+    const fetchOfferTicketUser = async (req, res, next) => {
+        try{
+            console.log(req.body);
+            userFetchTicket(
+                req.body,
+                serviceAmadeus,
+            )
+            .then((tickets) => res.status(200).json({ success: true, message: 'Ticket fetch success', tickets }))
+            .catch((error) => next(error))
+
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
 
 
     return{
         addUser,
         authenticateUser,
         reAuthAndFetchUser,
+        fetchOfferTicketUser
     }
 }

@@ -6,6 +6,8 @@ import config from './config/config.js';
 import routes from './frameworks/webservers/routes/index.js'
 import errorHandle from './frameworks/webservers/middlewares/errorHandleMiddleware.js';
 
+import amadeusService from './frameworks/services/amadeusService.js';
+
 const app = express();
 expressConfig(app, express, config)
 mongoConnection(mongoose, config,{
@@ -13,5 +15,7 @@ mongoConnection(mongoose, config,{
 }).connectToMongo()
 
 routes(app, express)
+
+amadeusService()
 
 app.use(errorHandle)

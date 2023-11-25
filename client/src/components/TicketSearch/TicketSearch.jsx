@@ -1,26 +1,33 @@
-import React, { useState } from 'react'
-import {  BiCalendar, BiUser, BiWorld } from 'react-icons/bi';
+/* eslint-disable react/prop-types */
+
+import { useState } from 'react'
+import { BiCalendar, BiUser, BiWorld } from 'react-icons/bi';
 import { IoAirplane } from "react-icons/io5";
 import { Button } from '../Button/Button';
 
-export const TicketSearch = () => {
+export const TicketSearch = ({onClick}) => {
 
-        const [from, setFrom] = useState('');
-        const [to, setTo] = useState('');
+        const [originLocationCode, setOriginLocationCode] = useState('');
+        const [destinationLocationCode, setDestinationLocationCode] = useState('');
         const [departureDate, setDepartureDate] = useState('');
         const [returnDate, setReturnDate] = useState('');
-        const [travelers, setTravelers] = useState(1);
+        const [adults, setAdults] = useState(1);
+        const [max] = useState(5)
+        const [currencyCode] = useState('INR')
         const [flightClass, setFlightClass] = useState('economy');
       
-        const handleSearch = () => {
-          // Add your search logic here
-          console.log('From:', from);
-          console.log('To:', to);
-          console.log('Departure Date:', departureDate);
-          console.log('Return Date:', returnDate);
-          console.log('Travelers:', travelers);
-          console.log('Class:', flightClass);
-        };
+        const handleSearch = async () => {
+          const body = {
+            originLocationCode,
+            destinationLocationCode,
+            departureDate,
+            adults,
+            currencyCode,
+            max,
+          }
+          onClick(body)
+        }
+
   return (
     <div className="container mx-auto mt-10 p-6 bg-gray-800 rounded-md shadow-md">
     <h1 className="text-3xl font-semibold mb-6 text-white">Flight Search</h1>
@@ -34,8 +41,8 @@ export const TicketSearch = () => {
           type="text"
           id="from"
           className="mt-1 p-2 w-full border rounded-md"
-          value={from}
-          onChange={(e) => setFrom(e.target.value)}
+          value={originLocationCode}
+          onChange={(e) => setOriginLocationCode(e.target.value)}
         />
       </div>
       <div className="flex items-center">
@@ -47,8 +54,8 @@ export const TicketSearch = () => {
           type="text"
           id="to"
           className="mt-1 p-2 w-full border rounded-md"
-          value={to}
-          onChange={(e) => setTo(e.target.value)}
+          value={destinationLocationCode}
+          onChange={(e) => setDestinationLocationCode(e.target.value)}
         />
       </div>
       <div className="flex items-center">
@@ -86,8 +93,8 @@ export const TicketSearch = () => {
           type="number"
           id="travelers"
           className="mt-1 p-2 w-full border rounded-md"
-          value={travelers}
-          onChange={(e) => setTravelers(parseInt(e.target.value, 10))}
+          value={adults}
+          onChange={(e) => setAdults(parseInt(e.target.value, 10))}
         />
       </div>
       <div className="flex items-center">
