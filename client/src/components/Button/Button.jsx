@@ -1,6 +1,5 @@
-import React from 'react'
 
-export const Button = ({type, style, name, onClick}) => {
+export const Button = ({style, type, onClick, name}) => {
   return (
     <>
     <div className="btn-container">

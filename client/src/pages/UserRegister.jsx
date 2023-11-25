@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import signupImg from '../assets/planeSignup.gif'
-import airbw from '../assets/airbw.gif'
 import { InputField } from '../components/Input/InputField'
 import { useForm } from '../hooks/useForm'
 import { showToast } from '../utils/toast'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Spinner } from '../components/Loader/Spinner'
 import { Button } from '../components/Button/Button'
 import { userRegisterAPI } from '../api/user'
@@ -39,7 +38,6 @@ export const UserRegister = () => {
                     "email": email,
                     "password": password,
                 }
-                console.log(body,'bod');
                 const res = await userRegisterAPI(body)
                 if (res.status === 200) {
                     clearForm()
@@ -64,7 +62,7 @@ export const UserRegister = () => {
             <div className="xl:block hidden">
                 <img className="xl:w-full xl:h-screen " src={signupImg} />
             </div>
-            <div className="absolute xl:top-1/2 xl:left-1/2 transform xl:-translate-x-1/2 xl:-translate-y-1/2 xl:my-0 my-16 w-[100%]">
+            <div className="absolute xl:top-1/2 xl:left-1/2 transform xl:-translate-x-1/2 xl:-translate-y-1/2 xl:my-0 my-8 w-[100%]">
                 <div className="title">
                 <h1 className="xl:text-6xl text-4xl font-serif mx-5 my-5 text-center text-indigo-950">AirBooking.com</h1>
                     <h1 className="xl:text-4xl text-2xl font-serif mx-5 my-5 text-center ">User Register</h1>
@@ -100,6 +98,11 @@ export const UserRegister = () => {
                         }
                     </div>
                 </form>
+                <div className="mt-10 xl:mx-52 mx-10">
+                        <Link to={'/signin'}>
+                            <span className="text-blue-800">Already have an account? Login</span>
+                        </Link>
+                    </div>
             </div>
         </div>
     )
