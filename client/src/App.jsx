@@ -3,8 +3,8 @@ import { UserRegister } from './pages/UserRegister';
 import { PageNotFound } from './pages/PageNotFound';
 import { IndexPage } from './pages/IndexPage';
 import { UserSignIn } from './pages/UserSignIn';
+import { UserRoutes } from './routes/UserRoutes';
 import './App.css'
-import { UserRoutes } from './routes/userRoutes';
 
 export const App = () => {
   return (
