@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 
-import React from 'react'
 import airline from 'airline-iata-code'
 import airports from 'airport-codes'
 

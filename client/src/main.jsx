@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary FallbackComponent={ServerError}>
       <Provider store={store}>
-        {/* <Toaster/> */}
+        <Toaster/>
         <App />
       </Provider>
     </ErrorBoundary>

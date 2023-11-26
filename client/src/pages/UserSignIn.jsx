@@ -45,11 +45,9 @@ export const UserSignIn = () => {
                 }
                 
             } catch(error) {
-                const axiosError = error 
-                console.log(error);
-                switch(axiosError.response?.status){
+                switch(error.response?.status){
                     case 401:
-                        showToast(`${axiosError.response.data}`,'error')
+                        showToast(`${error.response.data}`,'error')
                         break;
                     default:
                         break;
@@ -74,13 +72,23 @@ export const UserSignIn = () => {
         <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
           Email
         </label>
-        <InputField type="text" name="email" value={email} onChange={(value) => setEmail((prev) => (value !== prev ? value: prev))}/>
+        <InputField
+        type="text"
+        name="email"
+        value={email}
+        style="px-1 focus:border-blue-800 xl:bg-transparent  border border-black rounded xl:w-[71%] w-[100%] h-10 outline-none"
+        onChange={(value) => setEmail((prev) => (value !== prev ? value: prev))}/>
       </div>
       <div className="mb-6">
         <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
           Password
         </label>
-        <InputField type="password" name="password" value={password} onChange={(value) => setPassword((prev) => (value !== prev ? value: prev))}/>
+        <InputField
+        type="password"
+        name="password"
+        value={password}
+        style="px-1 focus:border-blue-800 xl:bg-transparent  border border-black rounded xl:w-[65%] w-[100%] h-10 outline-none"
+        onChange={(value) => setPassword((prev) => (value !== prev ? value: prev))}/>
       </div>
       
       <div className="text-center">

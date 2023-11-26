@@ -70,25 +70,45 @@ export const UserRegister = () => {
                 <form action="" className="xl:mx-52 mx-10" onSubmit={(event) => handleFormSubmit(event)}>
                     <div className="mb-5">
                         <label htmlFor="first-name" className="text-xl xl:mx-[20%]">First Name</label>
-                        <InputField type="text" name="firstName" value={firstName} onChange={onChange} />
+                        <InputField
+                        type="text"
+                        name="firstName"
+                        value={firstName}
+                        style="px-1 focus:border-blue-800 xl:bg-transparent  border border-black rounded xl:w-[60%] w-[100%] h-10 outline-none"
+                        onChange={onChange} />
                         <span className="text-red-500 xl:mx-[20%]">{firstNameError}</span>
                     </div>
 
                     <div className="mb-5">
                         <label htmlFor="last-name" className="text-xl xl:mx-[20%]">Last Name</label>
-                        <InputField type="text" name="lastName" value={lastName} onChange={onChange} />
+                        <InputField
+                        type="text"
+                        name="lastName"
+                        value={lastName}
+                        style="px-1 focus:border-blue-800 xl:bg-transparent  border border-black rounded xl:w-[60%] w-[100%] h-10 outline-none"
+                        onChange={onChange} />
                         <span className="text-red-500 xl:mx-[20%]">{lastNameError}</span>
                     </div>
 
                     <div className="mb-5">
                         <label htmlFor="email" className="text-xl xl:mx-[20%]" >Email</label>
-                        <InputField type="text" name="email" value={email} onChange={onChange} />
+                        <InputField
+                        type="text"
+                        name="email"
+                        value={email}
+                        style="px-1 focus:border-blue-800 xl:bg-transparent  border border-black rounded xl:w-[60%] w-[100%] h-10 outline-none"
+                        onChange={onChange} />
                         <span className="text-red-500 xl:mx-[20%]">{emailError}</span>
                     </div>
 
                     <div className="mb-5">
                         <label htmlFor="password" className="text-xl xl:mx-[20%]">Password</label>
-                        <InputField type="password" name="password" value={password} onChange={onChange} />
+                        <InputField
+                        type="password"
+                        name="password"
+                        value={password}
+                        style="px-1 focus:border-blue-800 xl:bg-transparent  border border-black rounded xl:w-[60%] w-[100%] h-10 outline-none"
+                        onChange={onChange} />
                         <span className="text-red-500 xl:mx-[20%]">{passwordError}</span>
                     </div>
 

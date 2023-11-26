@@ -1,8 +1,9 @@
-import { useState, memo } from 'react'
+import { useState } from 'react'
 import { TicketSearch } from '../components/TicketSearch/TicketSearch'
 import { Navbar } from '../components/Navbar/Navbar'
 import { TicketFeed } from '../components/TicketFeed/TicketFeed'
 import { userFetchAllOffers } from '../api/user'
+import { Skeleton } from '../components/Skeleton/Skeleton'
 
 export const UserHome = () => {
     console.count('home')
@@ -11,17 +12,18 @@ export const UserHome = () => {
 
 
     const handleSearch = async (body) => {
-        console.log(body);
+        setIsLoading(true)
         try {
             const res = await userFetchAllOffers(body)
-            console.log(res.data.tickets, 'icjji');
-            if (res.status === 200) {
 
+            if (res.status === 200) {
                 setData(res.data.tickets.data)
             }
-            // console.log(res,'res in offer');
+            
         } catch (error) {
             console.log(error);
+        } finally {
+            setIsLoading(false)
         }
     }
     return (
@@ -47,7 +49,9 @@ export const UserHome = () => {
                 </div>
             </div>
             {
-                isLoading ? 'Loading....' :
+                isLoading ? 
+                <Skeleton rows={5}/>
+                :
                 data?.map((item, index) => (
                     <div key={index} className="xl:mx-20 mx-1 my-5">
                       <TicketFeed data={item} />
