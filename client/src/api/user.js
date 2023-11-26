@@ -8,12 +8,13 @@ const userFetchOnRefreshAPI = () => API.get('/user/auth/refresh')
 
 const userFetchAllOffers = (body) => API.post('/user/auth/offer_tickets', body)
 
-// const userBookAppointmentAPI = (body) => API.post('/user/auth/book', body)
+const userLogoutAPI = () => API.post('/user/logout')
+
 
 export {
     userRegisterAPI,
     userLoginAPI,
     userFetchOnRefreshAPI,
-    // userBookAppointmentAPI,
     userFetchAllOffers,
+    userLogoutAPI,
 }

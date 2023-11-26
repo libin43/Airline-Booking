@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
+import { userLogoutAPI } from '../../api/user'
 
 
 export const Navbar = () => {
@@ -7,8 +8,10 @@ export const Navbar = () => {
     const handleToggle = () => {
         setToggle(!toggle)
     }
-    const logout = () => {
-        window.location.href ="/signin"
+    const logout = async () => {
+        const res = await userLogoutAPI()
+        console.log(res,'response');
+        // window.location.href ="/signin"
     }
   return (
     <>
