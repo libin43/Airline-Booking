@@ -27,9 +27,9 @@ export default function userRoute(express){
 
     router.route('/login').post(controller.authenticateUser)
 
-    router.route('/auth/book').post(authUser)
-
     router.route('/auth/offer_tickets').post(authUser, controller.fetchOfferTicketUser)
+
+    router.route('/logout').post(controller.logoutUser)
 
     //get methods
     router.route('/auth/refresh').get(controller.reAuthAndFetchUser)

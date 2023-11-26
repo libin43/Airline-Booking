@@ -126,7 +126,27 @@ export default function userController(
             .catch((error) => next(error))
 
         } catch(error) {
-            console.log(error);
+            // console.log(error);
+        }
+    }
+
+    const logoutUser = async (req, res, next) => {
+        try{
+            console.log('calling in logout');
+            const cookies = req.cookies
+            console.log(cookies);
+            // if(!cookies?.refreshToken) res.sendStatus(204)
+            res.clearCookie('refreshToken', refreshToken,{
+                httpOnly: true,
+                secure: true,
+                sameSite: 'None',
+                
+            })
+            console.log(req.cookies,'cjolie');
+            res.status(200).json({message: 'Cookie cleared'})
+
+        } catch(error) {
+            // console.log(error);
         }
     }
 
@@ -136,6 +156,7 @@ export default function userController(
         addUser,
         authenticateUser,
         reAuthAndFetchUser,
-        fetchOfferTicketUser
+        fetchOfferTicketUser,
+        logoutUser,
     }
 }

@@ -1,20 +1,22 @@
 import helmet from "helmet";
 import cors from 'cors';
+import { corsOptions } from "../../config/corsOptions.js";
 import cookieParser from "cookie-parser";
 
 
 export default function expressConfig(app, express, config) {
   app.use(helmet())
 
-  const corsOptions = {
-    "origin": "https://airline-booking-seven.vercel.app",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "allowedHeaders": "Content-Type, Authorization",
-    "credentials": true,
-    "preflightContinue": false,
-    "optionsSuccessStatus": 204
-  }
+  // const corsOptions = {
+  //   "origin": "http://localhost:5173",
+  //   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  //   "allowedHeaders": "Content-Type, Authorization",
+  //   "credentials": true,
+  //   "preflightContinue": false,
+  //   "optionsSuccessStatus": 204
+  // }
 
+  console.log(corsOptions,'cors option');
   app.use(cors(corsOptions))
 
   app.use(express.json());
