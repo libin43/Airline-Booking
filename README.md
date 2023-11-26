@@ -19,13 +19,13 @@ npm run dev
 # Server
 PORT = 7000
 # MongoDB
-MONGO_URL = mongodb+srv://libinliweb:1234@cluster-libin.i7uqrk6.mongodb.net/Airline
+MONGO_URL = <>
 # Token
-ACCESS_TOKEN_SECRET = Libin345
-REFRESH_TOKEN_SECRET = Likku123
+ACCESS_TOKEN_SECRET = <>
+REFRESH_TOKEN_SECRET = <>
 # Amadeus
-AMADEUS_API_KEY = 6VEY0SDJkbXvYfT30rHlBjKdUVf4kLXs
-AMADEUS_API_SECRET = 58Efk4so76M56pwI
+AMADEUS_API_KEY = <>
+AMADEUS_API_SECRET = <>
 # url
 DOMAIN_URL = "https://airline-booking-seven.vercel.app"
 LOCALE_URL = "http://localhost:5173"
