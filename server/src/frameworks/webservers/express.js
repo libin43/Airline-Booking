@@ -7,7 +7,7 @@ export default function expressConfig(app, express, config) {
   app.use(helmet())
 
   const corsOptions = {
-    "origin": ["http://localhost:5173"],
+    "origin": ["http://localhost:5173", "https://airline-server.onrender.com"],
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "allowedHeaders": "Content-Type, Authorization",
     "credentials": true,
