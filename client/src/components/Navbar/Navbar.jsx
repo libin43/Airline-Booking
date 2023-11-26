@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { userLogoutAPI } from '../../api/user'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
 
 
 export const Navbar = () => {
@@ -9,10 +10,11 @@ export const Navbar = () => {
         setToggle(!toggle)
     }
     const logout = async () => {
-        const res = await userLogoutAPI()
-        console.log(res,'response');
-        // window.location.href ="/signin"
+        // const res = await userLogoutAPI()
+        // console.log(res,'response');
+        window.location.href ="/signin"
     }
+    const userName = useSelector(state => state.user.firstName)
   return (
     <>
                 <nav className="navbar bg-gray-800 text-white px-5">
@@ -47,7 +49,7 @@ export const Navbar = () => {
                     <div className="nav-right my-auto ">
                         <ul className="personal-container flex gap-5 text-xl">
                             {/* <li className="menu-item">Notification</li> */}
-                            <li className="menu-item hover:text-slate-400">dkflkadj</li>
+                            <li className="menu-item hover:text-slate-400">{userName ? userName: ''}</li>
                             <li className="menu-item ">
                                 <button className='hover:text-slate-400' onClick={logout}>Logout</button>
                             </li>
