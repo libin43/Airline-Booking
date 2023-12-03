@@ -4,7 +4,6 @@ export default async function userRefreshAuth(
     serviceToken,
 ) {
     const userDecoded = await serviceToken.verifyRefreshToken(token)
-    console.log(userDecoded,'decoded refresh');
     // const firstName = userDecoded?.firstName
     const email = userDecoded?.email
     // const role = userDecoded?.role
