@@ -20,9 +20,7 @@ const userSlice = createSlice({
             state.accessToken = action.payload.accessToken
             state.loggedIn = true
         },
-        setAccessToken: (state, action) => {
-            console.log(action.payload,'hai');
-            
+        setAccessToken: (state, action) => {            
             state.accessToken = action.payload;
         },
         logoutUser: (state) => {
@@ -35,6 +33,6 @@ const userSlice = createSlice({
     }
 })
 
-export const {setUser, setAccessToken} = userSlice.actions
+export const {setUser, setAccessToken, logoutUser} = userSlice.actions
 
 export default userSlice.reducer

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { PageNotFound } from '../pages/PageNotFound';
 import { userFetchOnRefreshAPI } from '../api/user';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +9,9 @@ import { UserHome } from '../pages/UserHome';
 
 export const UserRoutes = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const token = useSelector(state => state.user.accessToken)
+    const loginStatus = useSelector(state => state.user.loggedIn)
     
 
     const fetchUserOnReload = async () => {
@@ -30,10 +33,12 @@ export const UserRoutes = () => {
         
       }
     }
+
   
     useEffect(()=>{
         if(!token){
             fetchUserOnReload()
+            console.log('CALL IN USER ROUTES');
         }
     },[token])
   return (

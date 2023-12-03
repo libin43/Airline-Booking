@@ -1,18 +1,24 @@
 import {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { userLogoutAPI } from '../../api/user'
+import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
+import { logoutUser } from '../../redux/reducers/userSlice'
 
 
 export const Navbar = () => {
     const [toggle, setToggle] = useState(false)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const handleToggle = () => {
         setToggle(!toggle)
     }
     const logout = async () => {
-        // const res = await userLogoutAPI()
-        // console.log(res,'response');
-        window.location.href ="/signin"
+        const res = await userLogoutAPI()
+        if(res.status){
+            dispatch(logoutUser())
+            navigate('/signin')
+        }
     }
     const userName = useSelector(state => state.user.firstName)
   return (
